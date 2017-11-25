@@ -1,8 +1,13 @@
-# coding=utf-8
+#-*- coding:utf-8 -*-
+
 import requests
 import re
 import random
 import time
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 
