@@ -11,6 +11,7 @@ from coroweb import get, post
 
 from model import User, Comment, Blog, next_id
 
+
 @get('/')
 async def index(request):
     users = await User.findAll()
