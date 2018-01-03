@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="04141206-214a-4861-aa9f-a14675bf398f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/awesome_webapp/www/app.py" afterPath="$PROJECT_DIR$/awesome_webapp/www/app.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/awesome_webapp/www/coroweb.py" afterPath="$PROJECT_DIR$/awesome_webapp/www/coroweb.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/awesome_webapp/www/handlers.py" afterPath="$PROJECT_DIR$/awesome_webapp/www/handlers.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,11 +17,22 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/awesome_webapp/www/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+            <state relative-caret-position="138">
+              <caret line="85" column="35" lean-forward="false" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="35" />
               <folding>
-                <element signature="e#1256#1447#0" expanded="false" />
                 <element signature="e#3690#4039#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="handlers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/awesome_webapp/www/handlers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+              <folding>
+                <element signature="e#77#133#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -32,18 +41,11 @@
       <file leaf-file-name="coroweb.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/awesome_webapp/www/coroweb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="-146">
+              <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="24" />
               <folding>
                 <element signature="e#62#105#0" expanded="true" />
-                <element signature="e#202#492#0" expanded="false" />
-                <element signature="e#515#808#0" expanded="false" />
-                <element signature="e#845#1095#0" expanded="false" />
-                <element signature="e#1129#1333#0" expanded="false" />
-                <element signature="e#1367#1528#0" expanded="false" />
-                <element signature="e#1559#1719#0" expanded="false" />
-                <element signature="e#1751#2251#0" expanded="false" />
-                <element signature="e#2288#4937#0" expanded="false" />
+                <element signature="e#518#811#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -76,8 +78,8 @@
         <option value="$PROJECT_DIR$/awesome_webapp/www/templates/test.html.py" />
         <option value="$PROJECT_DIR$/awesome_webapp/www/templates/test.html" />
         <option value="$PROJECT_DIR$/awesome_webapp/www/handlers.py" />
-        <option value="$PROJECT_DIR$/awesome_webapp/www/coroweb.py" />
         <option value="$PROJECT_DIR$/awesome_webapp/www/app.py" />
+        <option value="$PROJECT_DIR$/awesome_webapp/www/coroweb.py" />
       </list>
     </option>
   </component>
@@ -309,7 +311,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17246597" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -319,7 +320,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.077441074" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.077441074" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -338,6 +339,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/awesome_webapp/www/app.py</url>
+          <line>68</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -345,7 +353,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="13" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -355,7 +363,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1256#1447#0" expanded="false" />
             <element signature="e#3690#4039#0" expanded="false" />
           </folding>
         </state>
@@ -385,14 +392,7 @@
           <caret line="19" column="15" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="15" />
           <folding>
             <element signature="e#62#105#0" expanded="true" />
-            <element signature="e#202#492#0" expanded="false" />
-            <element signature="e#515#808#0" expanded="false" />
-            <element signature="e#845#1095#0" expanded="false" />
-            <element signature="e#1129#1333#0" expanded="false" />
-            <element signature="e#1367#1528#0" expanded="false" />
-            <element signature="e#1559#1719#0" expanded="false" />
-            <element signature="e#1751#2251#0" expanded="false" />
-            <element signature="e#2288#4937#0" expanded="false" />
+            <element signature="e#518#811#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -403,14 +403,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#62#105#0" expanded="true" />
-            <element signature="e#202#492#0" expanded="false" />
-            <element signature="e#515#808#0" expanded="false" />
-            <element signature="e#845#1095#0" expanded="false" />
-            <element signature="e#1129#1333#0" expanded="false" />
-            <element signature="e#1367#1528#0" expanded="false" />
-            <element signature="e#1559#1719#0" expanded="false" />
-            <element signature="e#1751#2251#0" expanded="false" />
-            <element signature="e#2288#4937#0" expanded="false" />
+            <element signature="e#518#811#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -421,14 +414,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#62#105#0" expanded="true" />
-            <element signature="e#202#492#0" expanded="false" />
-            <element signature="e#515#808#0" expanded="false" />
-            <element signature="e#845#1095#0" expanded="false" />
-            <element signature="e#1129#1333#0" expanded="false" />
-            <element signature="e#1367#1528#0" expanded="false" />
-            <element signature="e#1559#1719#0" expanded="false" />
-            <element signature="e#1751#2251#0" expanded="false" />
-            <element signature="e#2288#4937#0" expanded="false" />
+            <element signature="e#518#811#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -443,14 +429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6786">
           <caret line="554" column="17" lean-forward="false" selection-start-line="554" selection-start-column="17" selection-end-line="554" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/awesome_webapp/www/apis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -539,6 +517,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/awesome_webapp/www/apis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/awesome_webapp/www/coroweb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-146">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="e#62#105#0" expanded="true" />
+            <element signature="e#518#811#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/awesome_webapp/www/handlers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -549,30 +546,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/awesome_webapp/www/coroweb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="e#62#105#0" expanded="true" />
-            <element signature="e#202#492#0" expanded="false" />
-            <element signature="e#515#808#0" expanded="false" />
-            <element signature="e#845#1095#0" expanded="false" />
-            <element signature="e#1129#1333#0" expanded="false" />
-            <element signature="e#1367#1528#0" expanded="false" />
-            <element signature="e#1559#1719#0" expanded="false" />
-            <element signature="e#1751#2251#0" expanded="false" />
-            <element signature="e#2288#4937#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/awesome_webapp/www/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+        <state relative-caret-position="138">
+          <caret line="85" column="35" lean-forward="false" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="35" />
           <folding>
-            <element signature="e#1256#1447#0" expanded="false" />
             <element signature="e#3690#4039#0" expanded="false" />
           </folding>
         </state>
