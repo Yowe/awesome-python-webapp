@@ -16,6 +16,8 @@ configs = {
         'password': '123456',
         'db': 'awesome'
     },
-    'session': 'Awesome'
+    'session': {
+        'secret': 'Awesome'
+    }
            }
 

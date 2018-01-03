@@ -29,7 +29,7 @@ def post(path):
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            return func(args, kwargs)
+            return func(*args, **kwargs)
         wrapper.__method__ = 'POST'
         wrapper.__route__ = path
         return wrapper
