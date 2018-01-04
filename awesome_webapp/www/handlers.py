@@ -6,10 +6,11 @@ __author = 'YOWE'
 'url handlers'
 
 import re, time, json, logging, hashlib, base64, asyncio
+import markdown2
 
 from coroweb import get, post
 from aiohttp import web
-from apis import ApiValueError,ApiResourceNotFoundError
+from apis import ApiValueError,ApiResourceNotFoundError,APIPermissionError
 
 from model import User, Comment, Blog, next_id
 
@@ -26,6 +27,7 @@ def user2cookie(user, max_age):
     s = '%s-%s-%s-%s' % (user.id, user.passwd, expires, Cookie_Key)
     L = [user.id, expires, hashlib.sha1(s.encode('utf-8')).hexdigest()]
     return '-'.join(L)
+
 
 @asyncio.coroutine
 def cookie2user(cookie_str):
@@ -82,6 +84,31 @@ def signin():
         '__template__': 'signin.html'
     }
 
+
+@get('/blog/{id}')
+async def get_blog(id):
+    blog = await Blog.find(id)
+    comments = await Comment.findAll('blog_id=?', [id], orderBy='created_at desc')
+
+    for c in comments:
+        c.html_content = text2html(c.content)
+    blog.html_content = markdown2.markdown(blog.content)
+    return {
+        '__template__': 'blog.html',
+        'blog': blog,
+        'comments': comments
+    }
+
+
+@get('/manage/blogs/create')
+def manage_create_blog():
+    return {
+        '__template__': 'manage_blog_edit.html',
+        'id': '',
+        'action': '/api/blogs'
+    }
+
+
 @post('/api/authenticate')
 async def authenticate(*, email, passwd):
     if not email:
@@ -121,6 +148,29 @@ def signout(request):
 _RE_EMAIL = re.compile(r'^[a-z0-9\.\-\_]+\@[a-z0-9\-\_]+(\.[a-z0-9\-\_]+){1,4}$')
 _RE_SHA1 = re.compile(r'^[0-9a-f]{40}$')
 
+
+def check_admin(request):
+    if request.__user__ is None or not request.__user__.admin:
+        raise APIPermissionError()
+
+
+def get_page_index(page_str):
+    p = 1
+    try:
+        p = int(page_str)
+    except ValueError as e:
+        pass
+    if p < 1:
+        p = 1
+    return p
+
+
+def text2html(text):
+    lines = map(lambda s: '<p>%s</p>' % s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;'),
+                filter(lambda s: s.strip() != '', text.split('\n')))
+    return ''.join(lines)
+
+
 @post('/api/users')
 async def api_register_user(*, email, name, passwd):
     if not name or not name.strip():
@@ -143,3 +193,25 @@ async def api_register_user(*, email, name, passwd):
     r.content_type = 'application/json'
     r.body = json.dumps(user, ensure_ascii=False).encode('utf-8')
     return r
+
+
+@get('/api/blogs/{id}')
+async def api_get_blog(*, id):
+    blog = await Blog.find(id)
+    return blog
+
+
+@post('/api/blogs')
+async def api_create_blog(request,*,name,summary,content):
+    check_admin(request)
+    if not name or not name.strip():
+        raise ApiValueError('name', 'name must be not empty')
+    if not summary or not summary.strip():
+        raise ApiValueError('summary', 'summary must be not empty')
+    if not content or not content.strip():
+        raise ApiValueError('content', 'content must be not empty')
+
+    blog = Blog(user_id=request.__user__.id, user_name=request.__user__.name, user_image=request.__user__.image,
+                name=name.strip(), summary=summary.strip(), content=content.strip())
+    await blog.save()
+    return blog
