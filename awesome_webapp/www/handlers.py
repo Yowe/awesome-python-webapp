@@ -204,6 +204,7 @@ async def api_register_user(*, email, name, passwd):
     r.body = json.dumps(user, ensure_ascii=False).encode('utf-8')
     return r
 
+
 @get('/api/blogs')
 async def api_blogs(*, page='1'):
     page_index = get_page_index(page)
