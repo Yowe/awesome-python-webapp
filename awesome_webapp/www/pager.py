@@ -4,10 +4,15 @@
 __author = 'YOWE'
 
 'Pagination '
+# item_count 数据总条数
+# page_index  当前页
+# page_size  每页显示条目数
+# offset 每页移动条目数，offet=10代表从第11条开始检索，检索limit条数据
+# limit 返回条目数
 
 
 class Page(object):
-    def __int__(self, item_count, page_index=1, page_size=10):
+    def __init__(self, item_count, page_index=1, page_size=10):
         self.item_count = item_count
         self.page_size = page_size
         self.page_count = item_count // page_size + (1 if item_count % page_size > 0 else 0)
