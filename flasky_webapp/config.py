@@ -17,7 +17,8 @@ class DevelopmentConfig(Config):
     MAIL_SERVER='smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'sqlite:///'+os.path.join(basedir,'data-dev.sqlite')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'mysql://root:123456@localhost/flask'
+                              # 'sqlite:///'+os.path.join(basedir,'data-dev.sqlite')
 
 
 class TestingConfig(Config):
