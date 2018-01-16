@@ -12,7 +12,7 @@ def index():
     if form.validate_on_submit():
         return redirect(url_for('.index'))
     
-    return render_template('index.html',
+    return render_template('main/index.html',
                            form=form,
                            name=session.get('name'),
                            known=session.get('konwn', False),

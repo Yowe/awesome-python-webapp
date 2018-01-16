@@ -5,6 +5,6 @@ from wtforms.validators import DataRequired, Length, Email
 
 class LoginForm(Form):
     email = StringField('邮箱', validators=[DataRequired(), Length(1, 64), Email()])
-    password = PasswordField('密码',validators=[DataRequired()])
+    password = PasswordField('密码', validators=[DataRequired()])
     remember_me = BooleanField('记住我')
     submit = SubmitField('登录')

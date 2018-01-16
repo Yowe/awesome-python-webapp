@@ -12,6 +12,7 @@
                 <li><a href="{{ url_for('auth.logout') }}">注销</a> </li>
                 {% else %}
                 <li><a href="{{ url_for('auth.login') }}">登录</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
