@@ -2,7 +2,7 @@ from flask import render_template, redirect, request, url_for, flash
 from . import auth
 from ..models import User
 from .forms import LoginForm, RegistrationForm
-from flask_login import login_user, login_required,logout_user
+from flask_login import login_user, login_required,logout_user, current_user
 from app import db
 
 
@@ -32,11 +32,18 @@ def register():
     return render_template('auth/register.html', form=form)
 
 
-
-
 @auth.route('/logout')
 @login_required
 def logout():
     logout_user()
     flash('你应经退出系统')
     return redirect(url_for('main.index'))
+
+
+
+@auth.before_app_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.ping()
+        if not current_user.confirmed and request.endpoint[:5] != '.auth':
+            return redirect(url_for('auth.unconfirmed'))
