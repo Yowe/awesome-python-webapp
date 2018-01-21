@@ -6,6 +6,12 @@
 
 {% block navbar %}
     <div class="container">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+        {% endfor %}
         <div class="navbar-header">
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}

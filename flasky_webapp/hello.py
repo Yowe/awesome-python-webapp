@@ -1,42 +1,27 @@
-from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+from flask_mail import Mail
+from flask_script import Shell,Manager
 import os
-from werkzeug.security import generate_password_hash, check_password_hash
 
-basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
-app.config.setdefault('SQLALCHEMY_TRACK_MODIFICATIONS', True)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:123456@localhost/flask'
-app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
-db = SQLAlchemy(app)
+manager = Manager(app)
+app.config['MAIL_SERVER']='smtp.sina.com'
+app.config['MAIL_PORT']='25'
+app.config['MAIL_USE_TLS']=True
+app.config['MAIL_USERNAME']=os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD']=os.environ.get('MAIL_PASSWORD')
 
-class Role(db.Model):
-    __tablename__ = 'roles'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True)
-
-    users = db.relationship('User', backref='role')
-
-    def __repr__(self):
-        return '<Role %r>' % self.name
+mail=Mail(app)
 
 
-class User(db.Model):
-    __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), unique=True, index=True)
-    email = db.Column(db.String(64), unique=True, index=True)
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
-    password_hash = db.Column(db.String(128))
+def make_shell_context():
+    return dict(app=app)
 
-    @property
-    def password(self):
-        raise AttributeError('密码不允许读')
 
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
+manager.add_command('shell', Shell(make_context=make_shell_context))
 
-    def verify_password(self, password):
-        return  check_password_hash(self.password_hash, password)
+if __name__=='__main__':
+     manager.run()
+
+

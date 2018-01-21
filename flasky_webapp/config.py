@@ -5,17 +5,20 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
     SQLALCHEMY_COMMIT_ON_TEARDOWW = True
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
-    FLASKY_MAIL_SENDER = 'Flasky Admin <flasky@example.com>'
+    FLASKY_MAIL_SENDER = 'ruwangxiansheng@sina.com'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
+    MAIL_USERNAME = 'ruwangxiansheng@sina.com'
+    MAIL_PASSWORD = ''
 
     @staticmethod
     def init_app(app):
         pass
 
+
 class DevelopmentConfig(Config):
     DEBUG = True
-    MAIL_SERVER='smtp.googlemail.com'
-    MAIL_PORT = 587
+    MAIL_SERVER = 'smtp.sina.com'
+    MAIL_PORT = 25
     MAIL_USE_TLS = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'mysql://root:123456@localhost/flask'
                               # 'sqlite:///'+os.path.join(basedir,'data-dev.sqlite')
