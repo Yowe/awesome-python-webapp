@@ -3,6 +3,7 @@ from wtforms import StringField, SubmitField, TextAreaField, BooleanField, Selec
 from wtforms.validators import DataRequired, Length, Email, Regexp
 from ..models import Role, User
 
+
 class NameForm(Form):
     name = StringField('请输入名称：', validators=[DataRequired()])
     submit = StringField('Submit')
@@ -46,3 +47,10 @@ class EditProfileAdminForm(Form):
         if field.data != self.user.username and \
                 User.query.filter_by(username=field.data).first():
             raise ValidationError('Username already in use.')
+
+
+class PostForm(Form):
+    body = TextAreaField("what's on your mind?", validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+

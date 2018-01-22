@@ -2,7 +2,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, AnonymousUserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from . import db, login_manager
-from flask import current_app
+from flask import current_app, request
 from datetime import datetime
 
 
@@ -68,6 +68,8 @@ class User(UserMixin, db.Model):
 
     confirmed = db.Column(db.Boolean, default=False)
 
+    posts = db.relationship('Post', backref='author', lazy='dynamic')
+
     def __repr__(self):
         return '<User %r>' % self.username
 
@@ -108,6 +110,21 @@ class User(UserMixin, db.Model):
         self.confirmed = True
         db.session.add(self)
         return True
+
+    def gravatar(self, size=100):
+        if request.is_secure:
+            url = 'https://avatars1.githubusercontent.com/u/33456190?s=64&v=4'
+        else:
+            url = 'https://avatars2.githubusercontent.com/u/7358996?s=460&v=4'
+        return url
+
+
+class Post(db.Model):
+    __tablename__ = 'posts'
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 
 class AnonymousUser(AnonymousUserMixin):
