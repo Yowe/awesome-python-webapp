@@ -9,6 +9,7 @@ class Config:
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
     MAIL_USERNAME = 'ruwangxiansheng@sina.com'
     MAIL_PASSWORD = ''
+    FLASK_POSTS_PER_PAGE = 6
 
     @staticmethod
     def init_app(app):
