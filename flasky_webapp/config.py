@@ -10,6 +10,7 @@ class Config:
     MAIL_USERNAME = 'ruwangxiansheng@sina.com'
     MAIL_PASSWORD = ''
     FLASK_POSTS_PER_PAGE = 6
+    FLASKY_FOLLOWERS_PER_PAGE=6
 
     @staticmethod
     def init_app(app):
