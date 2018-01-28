@@ -80,13 +80,13 @@ class User(UserMixin, db.Model):
     confirmed = db.Column(db.Boolean, default=False)
 
     posts = db.relationship('Post', backref='author', lazy='dynamic')
-    # 粉丝
+    # 关注了哪些人
     followed = db.relationship('Follow',
-                               foreign_keys=[Follow.followed_id],
+                               foreign_keys=[Follow.follower_id],
                                backref=db.backref('follower', lazy='joined'),
                                lazy='dynamic',
                                cascade='all, delete-orphan')
-    # 关注的人
+    # 被哪些人关注
     followers = db.relationship('Follow',
                                 foreign_keys=[Follow.followed_id],
                                 backref=db.backref('followed', lazy='joined'),
@@ -160,6 +160,11 @@ class User(UserMixin, db.Model):
     # 是否被指定用户关注
     def is_followed_by(self, user):
         return self.followers.filter_by(follower_id=user.id).first() is not None
+
+    @property
+    def followed_posts(self):
+        return Post.query.join(Follow, Follow.followed_id == Post.author_id). \
+            filter(Follow.follower_id == self.id)
 
 
 class Post(db.Model):
