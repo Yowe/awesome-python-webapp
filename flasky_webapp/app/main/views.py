@@ -4,8 +4,8 @@ from flask import render_template, session, redirect, url_for, abort, \
 from flask_login import login_required, current_user
 
 from . import main
-from .forms import NameForm, EditProfileForm, EditProfileAdminForm, PostForm
-from ..models import User, Role, Permission, Post
+from .forms import NameForm, EditProfileForm, EditProfileAdminForm, PostForm, CommentForm
+from ..models import User, Role, Permission, Post, Comment
 from .. import db
 from ..decorators import admin_required, permission_required
 
@@ -36,6 +36,7 @@ def index():
    posts = pagination.items
    return render_template('index.html', form=form, posts=posts, pagination=pagination,
                           show_followed=show_followed,)
+
 
 @main.route('/all')
 def show_all():
@@ -108,12 +109,6 @@ def edit_profile_admin(id):
     return render_template('edit_profile.html', form=form, user=user)
 
 
-@main.route('/post/<int:id>')
-def post(id):
-    post = Post.query.get_or_404(id)
-    return render_template('post.html', posts=[post])
-
-
 @main.route('/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit(id):
@@ -162,6 +157,7 @@ def followers(username):
                             endpoint='.followers', pagination=pagination,
                             followers=followers)
 
+
 @main.route('/followed_by/<username>')
 def followed_by(username):
     user = User.query.filter_by(username=username).first()
@@ -178,6 +174,7 @@ def followed_by(username):
                            endpoint='.followed_by', pagination=pagination,
                            follows=follows)
 
+
 @main.route('/unfollow/<username>')
 @login_required
 @permission_required(Permission.FOLLOW)
@@ -193,5 +190,29 @@ def unfollow(username):
     db.session.commit()
     flash('You are not following %s anymore.' % username)
     return redirect(url_for('.user', username=username))
+
+
+@main.route('/post/<int:id>', methods=['GET', 'POST'])
+def post(id):
+    post = Post.query.get_or_404(id)
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(body=form.body.data,
+                          post=post,
+                          author=current_user._get_current_object())
+        db.session.add(comment)
+        db.session.commit()
+        flash('评论提交成功')
+        return redirect(url_for('.post', id=post.id, page=-1))
+
+    page = request.args.get('page', 1, type=int)
+    if page == -1:
+        page = (post.comments.count()-1)/\
+               current_app.config['FLASKY_COMMENT_PER_PAGE']+1
+    pagination = post.comments.order_by(Comment.timestamp.desc()).paginate(
+        page, per_page=current_app.config['FLASKY_COMMENT_PER_PAGE'], error_out=False)
+    comments = pagination.items
+    return render_template('post.html', posts=[post], form=form,
+                           comments=comments, pagination=pagination)
 
 
